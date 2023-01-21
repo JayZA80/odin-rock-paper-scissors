@@ -1,6 +1,10 @@
 // Create function to return a number
+function randomNumber () {
 // Get a random number between 1 and 3
 // Round random number DOWN to the nearest integer
+// Return the created number
+    return Math.floor(Math.random() * 3)
+}
 // Create a function for the computer to play RPS
 // Use a function to get a number between 1 and 3
 // If the returned number is 0, the computer picks rock
