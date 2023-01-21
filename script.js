@@ -6,13 +6,29 @@ function randomNumber () {
     return Math.floor(Math.random() * 3)
 }
 // Create a function for the computer to play RPS
-// Use a function to get a number between 1 and 3
+function getComputerChoice () {
+// Use the function to get a number between 1 and 3
+    let returnedNumber = randomNumber();
 // If the returned number is 0, the computer picks rock
+    if (returnedNumber === 0) {
+        return 'Rock';
+    }
 // Else if the returned number is 1, the computer picks paper
+    else if (returnedNumber === 1) {
+        return 'Paper';
+    }
 // Else if the returned number is 2, the computer picks scissors
-// Else, tell the player if the computer didn't pick a hand
+    else if (returnedNumber === 2) {
+        return 'Scissors';
+    }
+// Else, tell the player if the computer couldn't pick a hand
+    else {
+        console.log('Uh-oh, something went wrong with the computer picking a hand...');
+    }
+}
 // Create a function to prompt the player for their hand to play
 // Turn the player input into an all lower case string
+// Capitalize the first letter of the input
 // Return the player's choice
 // Create a function to play a single round of RPS
 // Initialize a variable to store the result
