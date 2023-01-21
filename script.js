@@ -27,24 +27,62 @@ function getComputerChoice () {
     }
 }
 // Create a function to prompt the player for their hand to play
-// Turn the player input into an all lower case string
-// Capitalize the first letter of the input
-// Return the player's choice
-// Create a function to play a single round of RPS
-// Initialize a variable to store the result
-// Run function for the computer to play
-// Prompt user for their hand
+function getPlayerChoice () {
+// Prompt the player to pick a hand
+    let pickedHand = prompt('It\s game time! Pick rock, paper, or scissors!');
+// Capitalize the first letter of the player input
+// Turn the rest of the characters in the player input into an all lower case string
+// Combine the two returned strings
+// Return the new String
+    return pickedHand.charAt(0).toUpperCase() + pickedHand.slice(1).toLowerCase();
+}
+// Create a function to play a single round of RPS with the picked hands as parameters
+function rpsRound (playerHand, computerHand) {
+// Initialize a variable to store the rounds result
+    var result;
+    switch (true) { // Using switch(true) is a great alternative to if ... else
 // If the player chose rock and the computer chose rock, return the result as a tie
+        case playerHand === 'Rock' && computerHand === 'Rock':
+            console.log(`It was a tie! Both you and the computer picked ${playerHand}`);
+            return result = 'tie';
 // If the player chose rock and the computer chose paper, return the result as a loss
+        case playerHand === 'Rock' && computerHand === 'Paper':
+            console.log(`You lost! ${computerHand} beats ${playerHand}`);
+            return result = 'loss';
 // If the player chose rock and the computer chose scissors, return the result as a win
+        case playerHand === 'Rock' && computerHand === 'Scissors':
+            console.log(`You won! ${playerHand} beats ${computerHand}`);
+            return result = 'win';
 // If the player chose paper and the computer chose rock, return the result as a win
+        case playerHand === 'Paper' && computerHand === 'Rock':
+            console.log(`You won! ${playerHand} beats ${computerHand}`);
+            return result = 'win';
 // If the player chose paper and the computer chose paper, return the result as a tie
+        case playerHand === 'Paper' && computerHand === 'Paper':
+            console.log(`It was a tie! Both you and the computer picked ${playerHand}`);
+            return result = 'tie';
 // If the player chose paper and the computer chose scissors, return the result as a loss
+        case playerHand === 'Scissors' && computerHand === 'Rock':
+            console.log(`You lost! ${computerHand} beats ${playerHand}`);
+            return result = 'loss';
 // If the player chose scissors and the computer chose rock, return the result as a loss
+        case playerHand === 'Scissors' && computerHand === 'Rock':
+            console.log(`You lost! ${computerHand} beats ${playerHand}`);
+            return result = 'loss';
 // If the player chose scissors and the computer chose paper, return the result as a win
+        case playerHand === 'Scissors' && computerHand === 'Paper':
+            console.log(`You won! ${playerHand} beats ${computerHand}`);
+            return result = 'win';
 // If the player chose scissors and the computer chose scissors, return the result as a tie
+        case playerHand === 'Scissors' && computerHand === 'Scissors':
+            console.log(`It was a tie! Both you and the computer picked ${playerHand}`);
+            return result = 'tie';
 // If something went wrong, let the player know
-// Return the result of the round
+        default:
+            console.log('Uh-oh, something went wrong while trying to read the results of the round...')
+    }
+}
+rpsRound(getPlayerChoice(), getComputerChoice());
 // Write a function to play a 5 round game
 // Keep track of how many times the computer won
 // Keep track of how many times the player won
@@ -53,4 +91,4 @@ function getComputerChoice () {
 // If the player won, increase their score
 // If the player lost, increase the computer's score
 // If it was a tie, increase both the player's and the computer's score
-// After the loop ends, show who wo
+// After the loop ends, show who won
