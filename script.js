@@ -62,7 +62,7 @@ function rpsRound (playerHand, computerHand) {
             console.log(`It was a tie! Both you and the computer picked ${playerHand}`);
             return result = 'tie';
 // If the player chose paper and the computer chose scissors, return the result as a loss
-        case playerHand === 'Scissors' && computerHand === 'Rock':
+        case playerHand === 'Paper' && computerHand === 'Scissors':
             console.log(`You lost! ${computerHand} beats ${playerHand}`);
             return result = 'loss';
 // If the player chose scissors and the computer chose rock, return the result as a loss
@@ -82,13 +82,35 @@ function rpsRound (playerHand, computerHand) {
             console.log('Uh-oh, something went wrong while trying to read the results of the round...')
     }
 }
-rpsRound(getPlayerChoice(), getComputerChoice());
 // Write a function to play a 5 round game
+function game () {
 // Keep track of how many times the computer won
+    let computerScore = 0;
 // Keep track of how many times the player won
+    let playerScore = 0;
 // Write a loop that lasts 5 iterations
+    for (let i = 0; i < 5; i++) {
 // Play one round
+        let round = rpsRound(getPlayerChoice(), getComputerChoice());
 // If the player won, increase their score
+        if (round === 'win') {
+            playerScore++;
 // If the player lost, increase the computer's score
+        } else if (round === 'loss') {
+            computerScore++;
 // If it was a tie, increase both the player's and the computer's score
-// After the loop ends, show who won
+        } else {
+            playerScore++;
+            computerScore++;
+        }
+    }
+// If the player's score is higher than the computer's score, the player won the game
+    if (playerScore > computerScore) {
+        console.log('Congrats! You won this game!');
+// Else, the computer won the game
+    } else {
+        console.log(`Tough luck! You lost this game...
+        The final score was: ${playerScore} - ${computerScore}`);
+    }
+}
+game();
