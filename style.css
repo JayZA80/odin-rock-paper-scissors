@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+}
+
+#container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gameContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    width: 75%;
+}
+
+#scoreboard {
+    background-color: aqua;
+}
+
+#btns {
+    background-color: rosybrown;
+}

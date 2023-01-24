@@ -84,11 +84,14 @@ function game (choice) {
     }
     if (playerScore === 5 || computerScore === 5) {
         if (playerScore > computerScore) {
-            console.log('Congrats! You won this game!');
+            alert('Congrats! You won this game!');
+            location.reload();
         } else if (computerScore > playerScore) {
-            console.log(`Tough luck! You lost this game...`);
+            alert(`Tough luck! You lost this game...`);
+            location.reload();
         } else {
-            console.log('UNBELIEVABLE! IT WAS A TIE WITH 5 POINTS EACH!');
+            alert('UNBELIEVABLE! IT WAS A TIE WITH 5 POINTS EACH!');
+            location.reload();
         }
     }
 }
