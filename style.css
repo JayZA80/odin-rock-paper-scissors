@@ -1,4 +1,6 @@
 body {
+    background-color: rgb(18, 28, 70);
+    color: white;
     margin: 0;
 }
 
@@ -7,19 +9,36 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 100px;
 }
 
 .gameContainer {
     align-items: center;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 100px;
     width: 75%;
 }
 
-#scoreboard {
-    background-color: aqua;
+#scoreboard h2 {
+    font-size: 2.5rem;
 }
 
-#btns {
-    background-color: rosybrown;
+#scoreboard p {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#btns button {
+    background-color: rgb(18, 28, 70);
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 30px;
+}
+
+#btns button:hover {
+    background-color: rgb(167, 36, 134);
 }
