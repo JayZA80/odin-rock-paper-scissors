@@ -1,3 +1,21 @@
+let computerScore = 0;
+let playerScore = 0;
+
+let rockBtn = document.getElementById('rockBtn');
+let paperBtn = document.getElementById('paperBtn');
+let scissorsBtn = document.getElementById('scissorsBtn');
+let scoreMsg = document.getElementById('scoreMsg');
+let pScore = document.getElementById('pScore');
+let cpuScore = document.getElementById('cpuScore');
+
+const btnList = [rockBtn, paperBtn, scissorsBtn];
+
+btnList.map(el => {
+    el.addEventListener('click', () => {
+        game(el.innerText)
+    })
+})
+
 function randomNumber () {
     return Math.floor(Math.random() * 3)
 }
@@ -11,70 +29,66 @@ function getComputerChoice () {
     } else if (returnedNumber === 2) {
         return 'Scissors';
     } else {
-        console.log('Uh-oh, something went wrong with the computer picking a hand...');
+        alert('Uh-oh, something went wrong with the computer picking a hand...');
     }
-}
-
-function getPlayerChoice () {
-    let pickedHand = prompt('It\s game time! Pick rock, paper, or scissors!');
-    return pickedHand.charAt(0).toUpperCase() + pickedHand.slice(1).toLowerCase();
 }
 
 function rpsRound (playerHand, computerHand) {
     var result;
     switch (true) { // Using switch(true) is a great alternative to if ... else
         case playerHand === 'Rock' && computerHand === 'Rock':
-            console.log(`It was a tie! Both you and the computer picked ${playerHand}`);
+            scoreMsg.innerText = `It was a tie! Both you and the computer picked ${playerHand}`;
             return result = 'tie';
         case playerHand === 'Rock' && computerHand === 'Paper':
-            console.log(`You lost! ${computerHand} beats ${playerHand}`);
+            scoreMsg.innerText = `You lost! ${computerHand} beats ${playerHand}`;
             return result = 'loss';
         case playerHand === 'Rock' && computerHand === 'Scissors':
-            console.log(`You won! ${playerHand} beats ${computerHand}`);
+            scoreMsg.innerText = `You won! ${playerHand} beats ${computerHand}`;
             return result = 'win';
         case playerHand === 'Paper' && computerHand === 'Rock':
-            console.log(`You won! ${playerHand} beats ${computerHand}`);
+            scoreMsg.innerText = `You won! ${playerHand} beats ${computerHand}`;
             return result = 'win';
         case playerHand === 'Paper' && computerHand === 'Paper':
-            console.log(`It was a tie! Both you and the computer picked ${playerHand}`);
+            scoreMsg.innerText = `It was a tie! Both you and the computer picked ${playerHand}`;
             return result = 'tie';
         case playerHand === 'Paper' && computerHand === 'Scissors':
-            console.log(`You lost! ${computerHand} beats ${playerHand}`);
+            scoreMsg.innerText = `You lost! ${computerHand} beats ${playerHand}`;
             return result = 'loss';
         case playerHand === 'Scissors' && computerHand === 'Rock':
-            console.log(`You lost! ${computerHand} beats ${playerHand}`);
+            scoreMsg.innerText = `You lost! ${computerHand} beats ${playerHand}`;
             return result = 'loss';
         case playerHand === 'Scissors' && computerHand === 'Paper':
-            console.log(`You won! ${playerHand} beats ${computerHand}`);
+            scoreMsg.innerText = `You won! ${playerHand} beats ${computerHand}`;
             return result = 'win';
         case playerHand === 'Scissors' && computerHand === 'Scissors':
-            console.log(`It was a tie! Both you and the computer picked ${playerHand}`);
+            scoreMsg.innerText = `It was a tie! Both you and the computer picked ${playerHand}`;
             return result = 'tie';
         default:
-            console.log('Uh-oh, something went wrong while trying to read the results of the round...')
+            alert('Uh-oh, something went wrong while trying to read the results of the round...')
     }
 }
 
-function game () {
-    let computerScore = 0;
-    let playerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let round = rpsRound(getPlayerChoice(), getComputerChoice());
-        if (round === 'win') {
-            playerScore++;
-        } else if (round === 'loss') {
-            computerScore++;
+function game (choice) {
+    let round = rpsRound(choice, getComputerChoice());
+    if (round === 'win') {
+        playerScore++;
+        pScore.innerText = playerScore;
+    } else if (round === 'loss') {
+        computerScore++;
+        cpuScore.innerText = computerScore;
+    } else {
+        playerScore++;
+        computerScore++;
+        pScore.innerText = playerScore;
+        cpuScore.innerText = computerScore;
+    }
+    if (playerScore === 5 || computerScore === 5) {
+        if (playerScore > computerScore) {
+            console.log('Congrats! You won this game!');
+        } else if (computerScore > playerScore) {
+            console.log(`Tough luck! You lost this game...`);
         } else {
-            playerScore++;
-            computerScore++;
+            console.log('UNBELIEVABLE! IT WAS A TIE WITH 5 POINTS EACH!');
         }
     }
-    if (playerScore > computerScore) {
-        console.log('Congrats! You won this game!');
-    } else {
-        console.log(`Tough luck! You lost this game...
-        The final score was: ${playerScore} - ${computerScore}`);
-    }
 }
-
-game();
